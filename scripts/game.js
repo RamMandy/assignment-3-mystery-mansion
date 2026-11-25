@@ -270,7 +270,7 @@ function startGame() {
 
   gameStarted = true;
   nameError.classList.add("hidden");
-  playerEntry.classList.add("hidden");
+  playerEntry.remove();
 
   startButton.disabled = true;
   startButton.textContent = "Investigation Started";
