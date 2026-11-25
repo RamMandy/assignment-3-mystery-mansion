@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mystery Mansion - The Vanishing Diamond</title>
+  <link rel="stylesheet" href="styles/styles.css">
+  <script src="scripts/game.js" defer></script>
+</head>
+<body>
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <p class="hero-label">A Mystery Adventure</p>
+      <h1>Mystery Mansion</h1>
+      <h2>The Vanishing Diamond</h2>
+      <p class="hero-description">Every clue has a story. Every suspect has a secret.</p>
+    </div>
+    <button id="scroll-down" class="scroll-arrow" type="button" aria-label="Scroll to the story">
+      &#8595;
+    </button>
+  </section>
+  <main class="game-container" id="story">
+    <div class="sound-controls">
+      <button id="sound-toggle" class="sound-button" type="button" aria-pressed="true">Sound: On</button>
+    </div>
+    <section class="story-section">
+      <h3>The Story</h3>
+      <p>
+        During an evening party at Blackwood Mansion, the lights suddenly go out.
+        When they return, a priceless diamond has disappeared!
+        Three suspects remain inside the mansion.
+        Your mission is to uncover the truth and find the thief.
+      </p>
+      <div id="game-instructions">
+        <h3>How to Play</h3>
+        <ol>
+          <li>Explore the mansion and investigate suspicious locations.</li>
+          <li>You have 5 investigation moves.</li>
+          <li>Every new search or questioning costs 1 move.</li>
+          <li>Some investigations reveal useful clues, while others are misleading.</li>
+          <li>Collecting clues and returning to the hallway are free.</li>
+          <li>You can search another location without leaving the same room.</li>
+          <li>You can accuse a suspect at any time, even without clues.</li>
+          <li>When your moves run out, you must make a final accusation.</li>
+          <li>Identify the correct thief to win!</li>
+        </ol>
+      </div>
+      <div class="player-entry">
+        <label for="player-name">Enter your detective name:</label>
+        <input type="text" id="player-name" placeholder="Your name..." maxlength="30">
+        <p id="name-error" class="error hidden" role="alert">Please enter your detective name!</p>
+      </div>
+      <div class="welcome-actions">
+        <button id="start-button" type="button">Start Game</button>
+      </div>
+    </section>
+    <section class="clues-section hidden">
+      <h3>Evidence Journal</h3>
+      <ul id="clues-list"></ul>
+    </section>
+    <div id="game-chapters" aria-live="polite"></div>
+  </main>
+  <aside class="game-status hidden" aria-label="Detective progress">
+    <div class="status-circle moves-circle">
+      <span class="status-label">MOVES</span>
+      <span id="moves">5</span>
+      <small>/ 5</small>
+    </div>
+    <div class="status-circle clues-circle">
+      <span class="status-label">CLUES</span>
+      <span id="clue-count">0</span>
+      <small>/ 3</small>
+    </div>
+  </aside>
+  <footer class="game-footer">
+    <p>&copy; 2026 Mystery Mansion | Created by Mandira</p>
+  </footer>
+</body>
+</html>
