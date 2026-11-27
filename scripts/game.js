@@ -93,6 +93,9 @@ let gameStarted = false;
 let gameFinished = false;
 let soundEnabled = true;
 let audioContext = null;
+const backgroundMusic = new Audio("audio/mystery-background.mp3");
+backgroundMusic.loop = true;
+backgroundMusic.volume = 0.15;
 
 scrollDownButton.addEventListener("click", function () {
   scrollToSection(storySection);
@@ -185,6 +188,12 @@ function toggleSound() {
 
   if (soundEnabled) {
     playSound("click");
+
+    if (gameStarted && !gameFinished) {
+      backgroundMusic.play().catch(() => {});  
+    }
+  } else {
+    backgroundMusic.pause();
   }
 }
 
@@ -272,6 +281,10 @@ function startGame() {
   nameError.classList.add("hidden");
   playerEntry.remove();
 
+  if (soundEnabled) {
+    backgroundMusic.play().catch(() => {});
+  }
+
   startButton.disabled = true;
   startButton.textContent = "Investigation Started";
 
@@ -322,8 +335,7 @@ function exploreMansion() {
   cluesSection.classList.remove("hidden");
   updateGameStatus();
 
-  let description =
-    "Choose a room to investigate or make an accusation.";
+  let description = "Choose a room to investigate or make an accusation.";
 
   if (movesRemaining === 0) {
     description =
@@ -561,6 +573,8 @@ function checkAccusation(suspectName) {
   chapter.classList.add("game-result", resultType);
 
   gameFinished = true;
+  backgroundMusic.pause();
+  backgroundMusic.currentTime = 0;
 
   const restartButton = document.createElement("button");
   restartButton.textContent = "Play Again";
